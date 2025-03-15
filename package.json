@@ -1,0 +1,35 @@
+{
+  "name": "techcareer-nodejs-final",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ogulcanmunogullari/techcareer-nodejs-final#readme",
+  "bugs": {
+    "url": "https://github.com/ogulcanmunogullari/techcareer-nodejs-final/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogulcanmunogullari/techcareer-nodejs-final.git"
+  },
+  "license": "MIT",
+  "author": "Oğulcan Munoğulları",
+  "main": "./dist/server.js",
+  "scripts": {
+    "start:json-server": "json-server --watch db.json --port 4444",
+    "start:server": "node server.js",
+    "start:dev": "npm-run-all --parallel start:json-server start:server"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "npm-run-all": "^4.1.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.10",
+    "json-server": "^1.0.0-beta.3"
+  }
+}

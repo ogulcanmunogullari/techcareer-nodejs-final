@@ -1,0 +1,97 @@
+
+<% if (todos.length > 0) { %>
+<ul id="" class="d-flex flex-column gap-4 rounded-lg shadow-lg bg-white p-4 list-unstyled" style="overflow-y: scroll; max-height: 500px;">
+  <% todos.forEach((todo, index) => { %>
+  <li data-id="<%= todo.id %>">
+    <% if (!todo.isEditMode) { %>
+
+    <div
+      class="d-flex justify-content-between align-items-center border border-secondary overflow-hidden"
+      style="border-radius: 8px"
+    >
+      <div class="d-inline-flex align-items-center pl-2">
+        <label
+          class="d-flex ms-2 align-items-center cursor-pointer position-relative"
+        >
+          <input type="checkbox" class="form-check-input h-5 w-5 cursor-pointer
+          transition-all appearance-none rounded shadow hover-shadow-md border
+          border-secondary checked:bg-primary checked:border-primary"
+          onclick="toggleCompleted('<%= todo.id %>')" <%= todo.isCompleted ?
+          'checked' : '' %> />
+          <span
+            class="position-absolute text-white opacity-0 checked-opacity-100 top-50 start-50 translate-middle"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-3.5 w-3.5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="1"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </span>
+        </label>
+      </div>
+      <p
+        class="w-100 ms-2 me-2 mb-0  <%= todo.isCompleted ? 'text-decoration-line-through text-danger' : '' %>"
+      >
+        <%= todo.todo %>
+      </p>
+
+      <div class="d-flex">
+        <button
+          type="submit"
+          class="btn btn-danger p-2 px-4"
+          style="border-radius: 5px 0 0 5px"
+          onclick="deleteTodo('<%= todo.id %>')"
+        >
+          Sil
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary p-2 rounded-end"
+          style="border-radius: 0 5px 5px 0"
+          onclick="editMode('<%= todo.id %>')"
+        >
+          Düzenle
+        </button>
+      </div>
+    </div>
+    <% } else { %>
+    <div class="d-flex justify-content-between align-items-center mt-2">
+      <input
+        id="edit<%= todo.id %>"
+        type="text"
+        class="form-control w-100 p-2 border border-secondary rounded-start"
+        value="<%= todo.todo %>"
+        style="border-radius: 5px 0 0 5px"
+      />
+      <button
+        type="submit"
+        class="btn btn-primary p-2 rounded-end"
+        style="border-radius: 0 5px 5px 0"
+        onclick="editTodo('<%= todo.id %>')"
+      >
+        Kaydet
+      </button>
+    </div>
+  </li>
+  <% } %> <% }) %>
+  <li>
+    <button
+      type="button"
+      class="btn btn-danger w-100"
+      onclick="deleteCompletedTodos()"
+    >
+      Tamamlananları Sil
+    </button>
+  </li>
+</ul>
+
+<% } %>
