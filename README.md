@@ -4,6 +4,13 @@
 
 ```
 npm i
+npm run start:server
+```
+
+## Json-Server ile çalıştırmak isterseniz
+
+```
+npm i
 npm run start:dev
 ```
 
@@ -12,7 +19,7 @@ npm run start:dev
 ```
 node_modules ve package-lock.json dosyalarını silin
 npm i
-npm run start:dev
+npm run start:server || npm run start:dev
 ```
 
 ## Kullanılan teknolojiler
